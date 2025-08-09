@@ -32,8 +32,8 @@ function bombillaFlash() {
 }
 bombillaFlash();
 // Configuración
-const horaObjetivo = '2025-08-08T17:00:00'; 
-const textoFinal = 'Comenzamos';
+const horaObjetivo = '2025-08-09T08:00:00'; 
+const textoFinal = '¡COMENZAMOS!';
 
 const countdownEl = document.getElementById('countdown');
 const mainTextEl = document.getElementById('main-text');
@@ -43,7 +43,7 @@ const frases = [
     '¡Esto está por iniciar!', 'Un momento especial está cerca', '¡Gracias por estar aquí!', 'Acomódate, disfruta el ambiente', '¡Hoy es un gran día!',
     'La espera vale la pena...', 'Siente la emoción en el aire', '¡Hoy puede ser un gran cambio!', 'La cuenta regresiva avanza...', '¡No te lo pierdas!',
     'Estamos por empezar algo único', '¡Quédate atento!', 'La energía se siente...', '¡Esto será inolvidable!', 'El momento se acerca...',
-    '¡Gracias por tu paciencia!', 'Aprovecha este instante', '¡Hoy es tu día!', 'La magia está por suceder', '¡Siente la vibra positiva!',
+    '¡Gracias por tu paciencia!', 'Aprovecha este instante', '¡Hoy es tu día!', '¡Siente la vibra positiva!',
     'Un nuevo comienzo está cerca', '¡Disfruta la espera!', 'La emoción crece...', '¡Ya casi!', 'El ambiente es especial...',
     '¡Comparte este momento!', 'La cuenta regresiva es parte del show', '¡Sigue atento!', 'La experiencia está por iniciar', '¡No te vayas!',
     '¡Esto es para ti!', 'La espera es parte de la aventura', '¡Siente la música!', '¡Relájate y disfruta!', '¡Hoy celebramos juntos!',
@@ -82,11 +82,16 @@ function actualizarConteo() {
     if (diff <= 0) {
         countdownEl.textContent = '';
         mainTextEl.textContent = textoFinal;
+        mainTextEl.style.fontSize = '11em';
         return;
+    } else {
+        // Restaurar tamaño normal si no es "Comenzamos"
+        mainTextEl.style.fontSize = '';
     }
     const horas = Math.floor(diff / (1000 * 60 * 60));
     const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+    //${horas.toString().padStart(2, '0')}:
     countdownEl.textContent = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`;
 }
 
